@@ -20,7 +20,6 @@ class TestGetOrder:
         assert get_order.status_code == 200 and order_info['success'] is True and len(order_info['orders']) == 1
         assert len(order_info['orders'][0]['ingredients']) == len(data_ingredients)
         assert order_info['orders'][0]['ingredients'][0] == data_ingredients[0]
-        print(order_info)
 
     @allure.title('Тест получения информации о заказе без авторизации')
     def test_get_order_without_login(self):

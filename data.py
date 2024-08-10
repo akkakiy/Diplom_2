@@ -1,31 +1,29 @@
 class Endpoints:
-    MAIN_URL = 'https://stellarburgers.nomoreparties.site/'
+    MAIN_URL = 'https://stellarburgers.nomoreparties.site/'     #главная часть url
 
-    INGREDIENTS_URL = f'{MAIN_URL}api/ingredients'
+    INGREDIENTS_URL = f'{MAIN_URL}api/ingredients'              #url для получения списка ингредиентов
 
-    CREATE_ORDER_URL = f'{MAIN_URL}api/orders'
+    CREATE_ORDER_URL = f'{MAIN_URL}api/orders'                  #url для создания заказа
 
-    PASS_RESET_URL = f'{MAIN_URL}password-reset'
+    RESET_PASSWORD_URL = f'{MAIN_URL}api/password-reset'        #url для сброса пароля
 
-    RESET_PASSWORD_URL = f'{MAIN_URL}api/password-reset'
+    USER_REGISTER_URL = f'{MAIN_URL}api/auth/register'          #url для регистрации
 
-    USER_REGISTER_URL = f'{MAIN_URL}api/auth/register'
+    USER_LOGIN_URL = f'{MAIN_URL}api/auth/login'                #url для авторизации
 
-    USER_LOGIN_URL = f'{MAIN_URL}api/auth/login'
+    USER_LOGOUT_URL = f'{MAIN_URL}api/auth/logout'              #url для выхода
 
-    USER_LOGOUT_URL = f'{MAIN_URL}api/auth/logout'
+    TOKEN_URL = f'{MAIN_URL}api/auth/token'                     #url для получения токена
 
-    TOKEN_URL = f'{MAIN_URL}api/auth/token'
+    USER_INFO_URL = f'{MAIN_URL}api/auth/user'                  #url для получения информации о пользователе
 
-    USER_INFO_URL = f'{MAIN_URL}api/auth/user'
+    USER_UPDATE_URL = f'{MAIN_URL}api/auth/user'                #url для изменения данных о пользователе
 
-    USER_UPDATE_URL = f'{MAIN_URL}api/auth/user'
+    USER_DELETE_URL = f'{MAIN_URL}api/auth/user'                #url для удаления пользователя
 
-    USER_DELETE_URL = f'{MAIN_URL}api/auth/user'
+    ALL_ORDERS_URL = f'{MAIN_URL}api/orders/all'                #url для получения информации о всех заказах
 
-    ALL_ORDERS_URL = f'{MAIN_URL}api/orders/all'
-
-    USER_ORDER_INFO_URL = f'{MAIN_URL}api/orders'
+    USER_ORDER_INFO_URL = f'{MAIN_URL}api/orders'               #url для получения информации о конкретном заказе
 
 
 class Massage:

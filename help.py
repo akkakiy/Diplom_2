@@ -70,24 +70,8 @@ class RegisterLoginDeleteUser:
         response = requests.post(f'{Endpoints.USER_REGISTER_URL}', data=valid_user)
         return {'response_text': response.text, 'status_code': response.status_code, 'data_user': valid_user}
 
-    @staticmethod
-    def login_user(valid_user):           # авторизация пользователя
-        response = requests.post(f'{Endpoints.USER_LOGIN_URL}', data=valid_user)
-        return {'access_token': response.json()['accessToken'], "response_text": response.text,
-                "status_code": response.status_code}
 
-    @staticmethod
-    def logout_user(access_token):        # выход пользователя
-        response = requests.post(f'{Endpoints.USER_LOGOUT_URL}', headers={'Authorization': f'Bearer {access_token}'})
-        return {'response_text': response.text, 'status_code': response.status_code}
-
-    @staticmethod
-    def delete_user(access_token):        # удаление пользователя
-        response = requests.delete(f'{Endpoints.USER_DELETE_URL}', headers={'Authorization': f'Bearer {access_token}'})
-        return {'response_text': response.text, 'status_code': response.status_code}
-
-
-class RealUser:
+class RealUser:      # реальный пользователь
     real_user = {
         'email': 'akkakiy13@gmail.com',
         'password': 'Zaq12wsxcde34rfv',
@@ -95,7 +79,7 @@ class RealUser:
     }
 
 
-class LaiUser:
+class LaiUser:      # несуществующий пользователь
     lai_user = {
         'email': 'akkakiy@gmailcom',
         'password': 'Zaq12wsxcde34rfv',
@@ -103,7 +87,7 @@ class LaiUser:
     }
 
 
-class GetIngredients:
+class GetIngredients:       # получение списка ингредиентов
     @staticmethod
     def get_ingredients(limit=4):
         response = requests.get(f'{Endpoints.INGREDIENTS_URL}')
