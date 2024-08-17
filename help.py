@@ -55,7 +55,7 @@ class CreateRandomUser:
         return user
 
 
-class User:           # создание пользователя
+class User:                                     # создание пользователя
     valid_user = CreateRandomUser.create_random_user()
     invalid_user_without_email = CreateRandomUser.create_random_user_without_email()
     invalid_user_without_password = CreateRandomUser.create_random_user_without_password()
@@ -65,13 +65,13 @@ class User:           # создание пользователя
 
 class RegisterLoginDeleteUser:
     @staticmethod
-    def register_user():        # регистрация пользователя
+    def register_user():                        # регистрация пользователя
         valid_user = User.valid_user
         response = requests.post(f'{Endpoints.USER_REGISTER_URL}', data=valid_user)
         return {'response_text': response.text, 'status_code': response.status_code, 'data_user': valid_user}
 
 
-class RealUser:      # реальный пользователь
+class RealUser:                                 # реальный пользователь
     real_user = {
         'email': 'akkakiy13@gmail.com',
         'password': 'Zaq12wsxcde34rfv',
@@ -79,7 +79,7 @@ class RealUser:      # реальный пользователь
     }
 
 
-class LaiUser:      # несуществующий пользователь
+class LaiUser:                                  # несуществующий пользователь
     lai_user = {
         'email': 'akkakiy@gmailcom',
         'password': 'Zaq12wsxcde34rfv',
@@ -87,7 +87,7 @@ class LaiUser:      # несуществующий пользователь
     }
 
 
-class GetIngredients:       # получение списка ингредиентов
+class GetIngredients:                           # получение списка ингредиентов
     @staticmethod
     def get_ingredients(limit=4):
         response = requests.get(f'{Endpoints.INGREDIENTS_URL}')

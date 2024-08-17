@@ -7,7 +7,7 @@ from help import RealUser, GetIngredients
 
 @allure.suite('Проверки получения информации о заказе')
 class TestGetOrder:
-    @allure.title('Тест получения информации о заказе с авторизацией')
+    @allure.title('Проверка получения информации о заказе с авторизацией')
     def test_get_order_with_login(self):
         login_user = requests.post(f'{Endpoints.USER_LOGIN_URL}', data=RealUser.real_user)
         token = login_user.json()['accessToken']
@@ -21,7 +21,7 @@ class TestGetOrder:
         assert len(order_info['orders'][0]['ingredients']) == len(data_ingredients)
         assert order_info['orders'][0]['ingredients'][0] == data_ingredients[0]
 
-    @allure.title('Тест получения информации о заказе без авторизации')
+    @allure.title('Проверка получения информации о заказе без авторизации')
     def test_get_order_without_login(self):
         token = ''
         get_order = requests.get(f'{Endpoints.USER_ORDER_INFO_URL}/{''}', headers={'Authorization': f'{token}'})

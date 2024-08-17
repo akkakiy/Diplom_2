@@ -8,7 +8,7 @@ from help import User
 
 @allure.suite('Проверки изменения данных пользователя')
 class TestUpdateUser:
-    @allure.title('Изменение данных при авторизации')
+    @allure.title('Проверка изменения данных при авторизации')
     @pytest.mark.parametrize('field_to_update', ['email', 'password', 'name'])
     def test_update_user_with_login(self, user_full_cycle, field_to_update):
         get_token = user_full_cycle[1].json()['accessToken']
@@ -17,7 +17,7 @@ class TestUpdateUser:
                                   headers={'Authorization': f'{get_token}'})
         assert response.status_code == 200 and response.json()['success'] is True
 
-    @allure.title('Изменение данных без авторизации')
+    @allure.title('Проверка изменения данных без авторизации')
     @pytest.mark.parametrize('field_to_update', ['email', 'password', 'name'])
     def test_update_user_without_login(self, user_full_cycle, field_to_update):
         get_token = None
