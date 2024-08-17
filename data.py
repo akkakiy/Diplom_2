@@ -27,9 +27,20 @@ class Endpoints:
 
 
 class Massage:
-    ERROR_MESSAGE_INGREDIENT = 'Ingredient ids must be provided'                                # сообщения об ошибках при создании заказа без ингредиентов
-    ERROR_MASSAGE_CREATE_DUPLICATE = '{"success":false,"message":"User already exists"}'        # сообщения об ошибках при создании существующего пользователя
-    ERROR_MASSAGE_CREATE_DATA_INCORRECT = 'Email, password and name are required fields'        # сообщения об ошибках при создании пользователя без данных
-    ERROR_MASSAGE_AUTHORIZE_AND_LOGIN_INCORRECT = 'email or password are incorrect'             # сообщения об ошибках при авторизации пользователя
-    ERROR_MASSAGE_EMAIL_EXIST = 'User with such email already exists'                           # сообщения об ошибках при получении/обновлении информации о пользователе
-    ERROR_MASSAGE_NOT_AUTHORIZE = 'You should be authorised'                                    # сообщения об ошибках при получении заказа без авторизации
+    # сообщения об ошибках при создании заказа без ингредиентов
+    ERROR_MESSAGE_INGREDIENT = 'Ingredient ids must be provided'
+
+    # сообщения об ошибках при создании существующего пользователя
+    ERROR_MASSAGE_CREATE_DUPLICATE = '{"success":false,"message":"User already exists"}'
+
+    # сообщения об ошибках при создании пользователя без данных
+    ERROR_MASSAGE_CREATE_DATA_INCORRECT = 'Email, password and name are required fields'
+
+    # сообщения об ошибках при авторизации пользователя
+    ERROR_MASSAGE_AUTHORIZE_AND_LOGIN_INCORRECT = 'email or password are incorrect'
+
+    # сообщения об ошибках при получении/обновлении информации о пользователе
+    ERROR_MASSAGE_EMAIL_EXIST = 'User with such email already exists'
+
+    # сообщения об ошибках при получении заказа без авторизации
+    ERROR_MASSAGE_NOT_AUTHORIZE = 'You should be authorised'
