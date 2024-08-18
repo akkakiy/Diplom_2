@@ -71,14 +71,6 @@ class RegisterLoginDeleteUser:
         return {'response_text': response.text, 'status_code': response.status_code, 'data_user': valid_user}
 
 
-class RealUser:                                 # реальный пользователь
-    real_user = {
-        'email': 'akkakiy13@gmail.com',
-        'password': 'Zaq12wsxcde34rfv',
-        'name': 'Vova'
-    }
-
-
 class LaiUser:                                  # несуществующий пользователь
     lai_user = {
         'email': 'akkakiy@gmailcom',

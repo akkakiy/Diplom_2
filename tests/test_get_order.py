@@ -2,15 +2,14 @@ import allure
 import requests
 
 from data import Endpoints, Massage
-from help import RealUser, GetIngredients
+from help import GetIngredients
 
 
 @allure.suite('Проверки получения информации о заказе')
 class TestGetOrder:
     @allure.title('Проверка получения информации о заказе с авторизацией')
-    def test_get_order_with_login(self):
-        login_user = requests.post(f'{Endpoints.USER_LOGIN_URL}', data=RealUser.real_user)
-        token = login_user.json()['accessToken']
+    def test_get_order_with_login(self, user_full_cycle):
+        token = user_full_cycle[1].json()['accessToken']
         data_ingredients = GetIngredients.get_ingredients()
         order = requests.post(f'{Endpoints.CREATE_ORDER_URL}', data={'ingredients': data_ingredients},
                               headers={'Authorization': f'{token}'})

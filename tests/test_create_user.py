@@ -17,7 +17,7 @@ class TestCreateUser:
                                       User.invalid_user_without_password,
                                       User.invalid_user_without_name,
                                       User.invalid_user_without_data])
-    def test_create_user_without_fields(self, user, user_full_cycle):
+    def test_create_user_without_fields(self, user):
         response = requests.post(f'{Endpoints.USER_REGISTER_URL}', data=user)
         assert response.status_code == 403 and response.json()['message'] == Massage.ERROR_MASSAGE_CREATE_DATA_INCORRECT
 
