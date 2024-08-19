@@ -3,23 +3,28 @@ import pytest
 import requests
 
 from data import Endpoints, Massage
-from help import User
+from help import User, CreateRandomUser
 
 
 @allure.suite('Проверки изменения данных пользователя')
 class TestUpdateUser:
     @allure.title('Проверка изменения данных при авторизации')
     @pytest.mark.parametrize('field_to_update', ['email', 'password', 'name'])
-    def test_update_user_with_login(self, user_full_cycle, field_to_update):
-        get_token = user_full_cycle[1].json()['accessToken']
-        response = requests.patch(f'{Endpoints.USER_UPDATE_URL}',
-                                  data=User.valid_user,
-                                  headers={'Authorization': f'{get_token}'})
-        assert response.status_code == 200 and response.json()['success'] is True
+    def test_update_user(self, field_to_update):
+        new_user = CreateRandomUser.create_random_user()
+        register_user = requests.post(f'{Endpoints.USER_REGISTER_URL}', data=new_user)
+        get_token = register_user.json()['accessToken']
+        update = requests.patch(f'{Endpoints.USER_UPDATE_URL}',
+                                data=field_to_update, headers={'Authorization': f'{get_token}'})
+
+        assert update.status_code == 200 and update.json()['success'] is True
+
+        requests.delete(f'{Endpoints.USER_DELETE_URL}', data=new_user)
 
     @allure.title('Проверка изменения данных без авторизации')
     @pytest.mark.parametrize('field_to_update', ['email', 'password', 'name'])
-    def test_update_user_without_login(self, user_full_cycle, field_to_update):
+    def test_update_user_without_login(self, field_to_update):
+        requests.post(f'{Endpoints.USER_REGISTER_URL}', data=User.valid_user)
         get_token = None
         response = requests.patch(f'{Endpoints.USER_UPDATE_URL}',
                                   data=User.valid_user,
@@ -27,3 +32,10 @@ class TestUpdateUser:
         assert response.status_code == 401
         assert response.json()['success'] is False
         assert response.json()['message'] == Massage.ERROR_MASSAGE_NOT_AUTHORIZE
+
+
+
+
+
+
+
