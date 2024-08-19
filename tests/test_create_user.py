@@ -4,9 +4,6 @@ import requests
 
 from data import Endpoints, Massage
 from help import User, RegisterLoginDeleteUser, CreateRandomUser
-from faker import Faker
-
-faker = Faker('ru_RU')
 
 
 @allure.suite('Проверки регистрации пользователя')
