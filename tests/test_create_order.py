@@ -30,7 +30,6 @@ class TestCreateOrder:
         order = requests.post(f'{Endpoints.CREATE_ORDER_URL}', data={'ingredients': data_ingredients},
                               headers={'Authorization': f'{token}'})
         assert order.status_code == 400 and order.json()['message'] == Massage.ERROR_MESSAGE_INGREDIENT
-        print(order.json())
 
     @allure.title('Тест создания заказа с авторизацией и некорректными ингредиентами')
     def test_create_order_with_login_and_incorrect_ingredients(self, user_full_cycle):

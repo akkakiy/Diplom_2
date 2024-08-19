@@ -16,10 +16,8 @@ class TestUpdateUser:
         get_token = register_user.json()['accessToken']
         update = requests.patch(f'{Endpoints.USER_UPDATE_URL}',
                                 data=field_to_update, headers={'Authorization': f'{get_token}'})
-
-        assert update.status_code == 200 and update.json()['success'] is True
-
         requests.delete(f'{Endpoints.USER_DELETE_URL}', data=new_user)
+        assert update.status_code == 200 and update.json()['success'] is True
 
     @allure.title('Проверка изменения данных без авторизации')
     @pytest.mark.parametrize('field_to_update', ['email', 'password', 'name'])
